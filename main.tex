@@ -1,0 +1,43 @@
+% main.tex
+\documentclass{mcmthesis}
+\mcmsetup{CTeX = false, tcn = 1234567} % 填好你们的控制号
+\usepackage{palatino}
+\usepackage{lipsum} % 其他你们需要的宏包在这里加
+
+\title{The Title of Your Paper}
+
+\begin{document}
+
+% === 摘要部分 ===
+\begin{abstract}
+    % 注意：把摘要文字写在 sections/abstract.tex 里
+    % 这里只留一行 input
+    \input{sections/abstract}
+\end{abstract}
+
+\maketitle
+
+% === 正文部分 ===
+% 目录（如果比赛要求有的话）
+\tableofcontents 
+\newpage
+
+% 模块化引入各章节
+\input{sections/1_intro}       % 问题背景、重述
+\input{sections/2_assumptions} % 假设与符号说明
+\input{sections/3_model_build} % 模型建立
+\input{sections/4_solution}    % 模型求解
+\input{sections/5_sensitivity} % 灵敏度分析
+\input{sections/6_conclusion}  % 结论与优缺点
+
+% === 参考文献 ===
+% 建议使用 BibTeX，这样管理参考文献最方便
+\bibliographystyle{plain}
+\bibliography{references} 
+
+% === 附录 (代码) ===
+\begin{appendices}
+    \input{sections/appendix_code}
+\end{appendices}
+
+\end{document}

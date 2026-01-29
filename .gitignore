@@ -1,0 +1,11 @@
+# LaTeX 忽略文件列表
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.fls
+*.fdb_latexmk
+*.pdf
+# 注意：通常建议忽略 pdf，因为它是生成的。
+# 如果你们非要看对方生成的 pdf，可以把上面 *.pdf 删掉。
