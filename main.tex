@@ -1,43 +1,34 @@
-% main.tex
-\documentclass{mcmthesis}
-\mcmsetup{CTeX = false, tcn = 1234567} % 填好你们的控制号
-\usepackage{palatino}
-\usepackage{lipsum} % 其他你们需要的宏包在这里加
+%!TEX program = xelatex
+\documentclass[12pt]{ctexart}
 
-\title{The Title of Your Paper}
+% === 基础宏包 ===
+\usepackage{geometry}
+\geometry{a4paper, scale=0.8}
+
+% === 标题信息 ===
+\title{Git与LaTeX协作流程测试}
+\author{测试员}
+\date{\today}
 
 \begin{document}
 
-% === 摘要部分 ===
+\maketitle
+
+% === 1. 测试摘要模块 ===
+% 确保你的 sections 文件夹里有 abstract.tex
 \begin{abstract}
-    % 注意：把摘要文字写在 sections/abstract.tex 里
-    % 这里只留一行 input
     \input{sections/abstract}
 \end{abstract}
 
-\maketitle
+% === 2. 测试正文模块 ===
+% 确保你的 sections 文件夹里有 intro.tex
+% 如果没有，请把下面这一行先加个 % 注释掉
+\input{sections/intro}
 
-% === 正文部分 ===
-% 目录（如果比赛要求有的话）
-\tableofcontents 
-\newpage
-
-% 模块化引入各章节
-\input{sections/1_intro}       % 问题背景、重述
-\input{sections/2_assumptions} % 假设与符号说明
-\input{sections/3_model_build} % 模型建立
-\input{sections/4_solution}    % 模型求解
-\input{sections/5_sensitivity} % 灵敏度分析
-\input{sections/6_conclusion}  % 结论与优缺点
-
-% === 参考文献 ===
-% 建议使用 BibTeX，这样管理参考文献最方便
-\bibliographystyle{plain}
-\bibliography{references} 
-
-% === 附录 (代码) ===
-\begin{appendices}
-    \input{sections/appendix_code}
-\end{appendices}
+% === 3. 参考文献（暂时注释掉）===
+% 等你需要用的时候，再把下面两行取消注释
+% 并且确保根目录下有一个叫 references.bib 的文件
+% \bibliographystyle{plain}
+% \bibliography{references}
 
 \end{document}
