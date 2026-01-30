@@ -1,34 +1,182 @@
-%!TEX program = xelatex
-\documentclass[12pt]{ctexart}
+%美赛模板：模块化协作版
+\documentclass[12pt]{article}
 
-% === 基础宏包 ===
-\usepackage{geometry}
-\geometry{a4paper, scale=0.8}
+% ------------------------------------------------------------
+% 1. 基础信息配置
+% ------------------------------------------------------------
+% 请在下方填写队伍控制号
+\usepackage[1234567]{easymcm} 
+\problem{Y}  % 请填写题号 (A/B/C/D/E/F)
 
-% === 标题信息 ===
-\title{Git与LaTeX协作流程测试}
-\author{测试员}
-\date{\today}
+% ------------------------------------------------------------
+% 2. 宏包加载 (保持原模板配置)
+% ------------------------------------------------------------
+\usepackage{palatino}  % 官方推荐字体
+\usepackage{pdfpages}
+\usepackage{longtable}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{listings}
+\usepackage{paralist}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{matlab-prettifier}
+\usepackage{tcolorbox}
+\tcbuselibrary{listings,skins,breakable,xparse}
+\usepackage[ruled,linesnumbered]{algorithm2e} 
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, calc}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{lettrine}
+\usepackage{hyperref}
+\usepackage{cleveref}
 
+% 图片路径设置 (建议所有图片都放在 img 文件夹)
+\graphicspath{{img/}} 
+
+% ------------------------------------------------------------
+% 3. 代码环境定义 (保持原模板的高级样式)
+% ------------------------------------------------------------
+% ============================================================
+% 补丁：AI 辅助代码环境定义 (从原模版搬回)
+% ============================================================
+
+% 1. 定义 Python 的 AI 样式 (无边框)
+\lstdefinestyle{ai_python_style}{
+    language = Python,
+    numbers = none,       % 去掉行号
+    basicstyle = \footnotesize\fontfamily{pcr}\selectfont,
+    keywordstyle = \color{darkblue}\bfseries,
+    commentstyle = \color{darkgreen},
+    stringstyle = \color{red!60},
+    showstringspaces = false,
+    emphstyle = \color{orange!60},
+    emph = {self, cls, True, False, None},
+    breaklines = true,
+    breakatwhitespace = true,
+    postbreak = \mbox{\textcolor{gray}{$\hookrightarrow$}\space},
+    frame = none,         % 无边框
+    backgroundcolor = \color{white}
+}
+
+% 2. 定义 MATLAB 的 AI 样式 (无边框)
+\lstdefinestyle{ai_matlab_style}{
+    style = Matlab-editor,
+    numbers = none,       % 去掉行号
+    basicstyle = \footnotesize\fontfamily{pcr}\selectfont,
+    breaklines = true,
+    breakatwhitespace = true,
+    postbreak = \mbox{\textcolor{gray}{$\hookrightarrow$}\space},
+    frame = none,         % 无边框
+    backgroundcolor = \color{white}
+}
+
+% 3. 创建环境映射
+\lstnewenvironment{ai_python}[1][]
+    {\lstset{style=ai_python_style, #1}}
+    {}
+
+\lstnewenvironment{ai_matlab}[1][]
+    {\lstset{style=ai_matlab_style, #1}}
+    {}
+% ============================================================
+\tcbset{
+    mylist/.style = {
+        colframe = gray, colback = white,
+        coltitle = red!50!yellow!3!white, colbacktitle = white,
+        listing only,
+        attach boxed title to top center = {yshift = -\tcboxedtitleheight/2},
+        enhanced, drop fuzzy shadow, left = 6.5mm, breakable,
+        fonttitle=\small\bfseries\color{black},
+        before skip=20pt plus 2pt, after skip=20pt plus 2pt,
+    },
+    example/.style 2 args = {
+        mylist, title = {Listing \thetcbcounter: #1}, label = {#2},
+    }
+}
+
+% MATLAB 环境定义
+\newtcblisting[auto counter, number within = section, list inside = mcode]{matlab}[3][]{
+    listing options = {
+        style = Matlab-editor, numbers = left,
+        numberstyle = \footnotesize\color{darkgray}\fontfamily{pcr}\selectfont,
+        basicstyle = \footnotesize\fontfamily{pcr}\selectfont,
+        breaklines = true, breakatwhitespace = true,
+        postbreak = \mbox{\textcolor{gray}{$\hookrightarrow$}\space}
+    },
+    overlay = {\begin{tcbclipinterior}\fill[blue!15!white] (frame.south west) rectangle ([xshift=5.3mm]frame.north west);\end{tcbclipinterior}},
+    example = {#2}{#3}, #1,
+}
+
+% Python 环境定义
+\newtcblisting[auto counter, number within = section, list inside = pcode]{python}[3][]{
+    listing options = {
+        language = Python, numbers = left,
+        numberstyle = \footnotesize\color{darkgray}\fontfamily{pcr}\selectfont,
+        basicstyle = \footnotesize\fontfamily{pcr}\selectfont,
+        keywordstyle = \color{darkblue}\bfseries,
+        commentstyle = \color{darkgreen},
+        stringstyle = \color{red!60},
+        showstringspaces = false,
+        emphstyle = \color{orange!60},
+        emph = {self, cls, True, False, None},
+        breaklines = true, breakatwhitespace = true,
+        postbreak = \mbox{\textcolor{gray}{$\hookrightarrow$}\space}
+    },
+    overlay = {\begin{tcbclipinterior}\fill[blue!15!white] (frame.south west) rectangle ([xshift=5.3mm]frame.north west);\end{tcbclipinterior}},
+    example = {#2}{#3}, #1,
+}
+
+% 载入自定义命令 (如果你的文件夹里有 new_command.tex 请保留此行，否则注释掉)
+\input{new_command.tex} 
+
+\title{Title Placeholder} % 实际上美赛不需要在这里写Title，Title在摘要页自动生成
+
+% ------------------------------------------------------------
+% 4. 正文开始
+% ------------------------------------------------------------
 \begin{document}
 
-\maketitle
-
-% === 1. 测试摘要模块 ===
-% 确保你的 sections 文件夹里有 abstract.tex
+% === 摘要部分 (协作修改点) ===
+% 所有的摘要文字请去 sections/abstract.tex 修改
 \begin{abstract}
     \input{sections/abstract}
 \end{abstract}
 
-% === 2. 测试正文模块 ===
-% 确保你的 sections 文件夹里有 intro.tex
-% 如果没有，请把下面这一行先加个 % 注释掉
-\input{sections/intro}
+\maketitle      % 生成 Summary Sheet
+\tableofcontents % 生成目录
+\newpage
 
-% === 3. 参考文献（暂时注释掉）===
-% 等你需要用的时候，再把下面两行取消注释
-% 并且确保根目录下有一个叫 references.bib 的文件
-% \bibliographystyle{plain}
-% \bibliography{references}
+% === 正文章节 (协作修改点) ===
+% 每个人负责不同的文件，避免冲突
+
+% 1. 问题重述与分析
+\input{sections/1_intro}
+
+% 2. 假设与符号说明
+\input{sections/2_assumptions}
+
+% 3. 模型建立与求解 (重头戏)
+\input{sections/3_model}
+
+% 4. 灵敏度分析与模型评价
+\input{sections/4_evaluation}
+
+% 5. 结论
+\input{sections/5_conclusion}
+
+% === 参考文献 ===
+% 确保根目录下有 references.bib 文件
+\clearpage
+\bibliographystyle{plain} % 或者使用 unsrt (按引用顺序)
+\bibliography{references}
+
+% === 附录 (代码与Memo) ===
+\clearpage
+\newpage
+\begin{appendices}
+    \input{sections/appendix}
+\end{appendices}
 
 \end{document}
