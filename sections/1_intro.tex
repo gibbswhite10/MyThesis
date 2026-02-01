@@ -1,6 +1,98 @@
 %!TEX root = ../main.tex
 \section{Introduction}
-This is intro!
+\subsection{Problem Background}
+A Moon Colony is definetly a great leap for mankind to explore and make use of the universe.
+Though the task of building a colony seems samll compared with the whole process of exploring
+universe, this could be extremely difficult and costly starting from 2050.
+
+With the aid of space elevator system and corresponding facilities like Galactic harbours and 
+apex anchors, we're able to combine this efficient new system with traditional methods of launching
+rockets from earth to jointly contribute to the construction of the Moon Colony which is designed 
+to hold 100,000 permanent residents.
+
+To aid the MCM Agency in navigating these complex choices, we developed mathematical 
+models to simulate and compare these transportation paradigms. By quantifying the 
+trade-offs between the Space Elevator's consistent lift capacity and the flexible 
+but expensive nature of traditional rockets, our study provides a precise 
+roadmap for optimal supply chain management. %此处是ai写的
+
+\subsection{Restatement of the Problem}
+Based on the background mentioned above, our goal is to develop a comprehensive 
+model that assists the MCM Agency in determining the most cost-effective, timely, 
+and sustainable strategy for building and maintaining the Moon Colony. The model 
+should address the following questions:
+
+\begin{itemize}
+    \item \textbf{Scenario Analysis:} Determine the optimal logistics strategy 
+    among three scenarios: utilizing the Space Elevator System exclusively, relying 
+    solely on traditional rocket launches, or adopting a hybrid combination of both.
+    
+    \item \textbf{Reliability under Uncertainty:} Identify to what extent the  
+    solutions change when the transportation systems are not in perfect working 
+    condition or even damaged for a period, accounting for factors such as tether 
+    swaying or rocket launch failures. % ai写的
+    
+    \item \textbf{Resource Sustainability:} Investigate the water supply requirements 
+    for the 100,000-person colony over a one-year period and evaluate the additional 
+    logistical burden and costs required to ensure survival. %ai写的
+    
+    \item \textbf{Environmental Impact:} Discuss the ecological impacts of each 
+    scenario on Earth's environment, specifically focusing on possible atmospheric pollution, 
+    and propose adjustments to minimize these impacts.
+\end{itemize}
+
+\subsection{Our Work}
+To address these challenges, we constructed a multi-stage modeling framework:
+
+\begin{itemize}
+    \item \textbf{In Task 1}, we develop a general rating system based on \textbf{Cobb-Douglas
+     Function} considering 2 input factors: construction period and total cost. The rating system's
+     output indicates the combination of economic feasibility and acceptability of construction
+     span. Large amounts of simulation data are input into the rating system and thus we derive
+     a best solution in the hypothetical perfect scenario.
+
+    \item \textbf{In Task 2}, we employ a \textbf{Stochastic Reliability Model} 
+    incorporating Monte Carlo simulations to address system imperfections. By 
+    introducing random variables for operational disruptions (e.g., elevator 
+    downtime or launch window delays), the model evaluates the robustness of 
+    the proposed schedules and costs. % ai写的
+    
+    \item \textbf{In Task 3}, we develop a \textbf{Metabolic Demand Model} to 
+    quantify the colony's water needs. This model calculates the daily per capita 
+    consumption and recycling efficiency to predict the cumulative mass of water 
+    that must be transported annually after the colony is inhabited. % ai写的，模型名有待考虑
+    
+    \item \textbf{Finally}, we conduct an \textbf{Environmental Impact Assessment 
+    } to compare the carbon emmision of rocket propellants against the 
+    clean energy profile of the Space Elevator. We propose a "Green Logistics 
+    Index" to identify the strategy that balances construction efficiency with 
+    ecological preservation.
+    %%%此处 OUR WORK 可以用流程图来表示！%%%
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

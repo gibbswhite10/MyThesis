@@ -1,12 +1,17 @@
 %美赛模板：模块化协作版
-\documentclass[12pt]{article}
+%!TEX program = xelatex
+\documentclass[12pt, draft]{article}
+
+
+
+
 
 % ------------------------------------------------------------
 % 1. 基础信息配置
 % ------------------------------------------------------------
 % 请在下方填写队伍控制号
-\usepackage[1234567]{easymcm} 
-\problem{Y}  % 请填写题号 (A/B/C/D/E/F)
+\usepackage[]{easymcm} 
+\problem{B}  % 请填写题号 (A/B/C/D/E/F)
 
 % ------------------------------------------------------------
 % 2. 宏包加载 (保持原模板配置)
@@ -132,7 +137,8 @@
 \input{new_command.tex} 
 
 \title{Title Placeholder} % 实际上美赛不需要在这里写Title，Title在摘要页自动生成
-
+% 只让目录显示到二级标题 (Subsection)，隐藏三级标题 (Subsubsection)
+\setcounter{tocdepth}{2}
 % ------------------------------------------------------------
 % 4. 正文开始
 % ------------------------------------------------------------
@@ -140,9 +146,7 @@
 
 % === 摘要部分 (协作修改点) ===
 % 所有的摘要文字请去 sections/abstract.tex 修改
-\begin{abstract}
-    \input{sections/abstract}
-\end{abstract}
+
 
 \maketitle      % 生成 Summary Sheet
 \tableofcontents % 生成目录
@@ -157,14 +161,20 @@
 % 2. 假设与符号说明
 \input{sections/2_assumptions}
 
-% 3. 模型建立与求解 (重头戏)
-\input{sections/3_model}
+% 3. 
+\input{sections/3_notations}
 
-% 4. 灵敏度分析与模型评价
-\input{sections/4_evaluation}
+% 4. 
+\input{sections/4_analysis}
 
-% 5. 结论
-\input{sections/5_conclusion}
+%5.
+\input{sections/5_models}
+
+% 5. 结论灵敏度分析与模型评价
+\input{sections/6_evaluation}
+
+% 6.结论
+\input{sections/7_conclusion}
 
 % === 参考文献 ===
 % 确保根目录下有 references.bib 文件
